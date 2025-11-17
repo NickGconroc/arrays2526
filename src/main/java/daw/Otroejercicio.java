@@ -12,28 +12,29 @@ public class Otroejercicio {
     // nuevo array sin duplicados.
     public static void main(String[] args) {
 
-        //Creamos el array para usar la funcion arrayAleatorio con el parametro del numero de 
-        //numeros que queremos que tenga
+        // Creamos el array para usar la funcion arrayAleatorio con el parametro del
+        // numero de
+        // numeros que queremos que tenga
         int[] arrayaleatorioo = arrayAleatorio(10);
 
         // esta forma es la incorrecta de imprimir un arra
-        System.out.println(arrayaleatorioo); 
-        //La dos formas correctas de imprimir un array son
-        //1. usando Arrays.toString
+        System.out.println(arrayaleatorioo);
+        // La dos formas correctas de imprimir un array son
+        // 1. usando Arrays.toString
         System.out.println(Arrays.toString(arrayaleatorioo));
-        //2. con un for
-        for (int i = 0; i < arrayaleatorioo.length; i++){
+        // 2. con un for
+        for (int i = 0; i < arrayaleatorioo.length; i++) {
             System.out.println(arrayaleatorioo[i]);
         }
 
         // Creando otro array para crear un array que asi
-        //Quitamos los duplicados llamando a la función
+        // Quitamos los duplicados llamando a la función
         int[] arraySinDuplicados = quitarDuplicado(arrayaleatorioo);
 
-        // 4️⃣ Mostramos el array resultante sin duplicados
+        // Mostramos el array resultante sin duplicados
         System.out.println("Array sin duplicados:");
         System.out.println(Arrays.toString(arraySinDuplicados));
-        for (int j= 0; j< arraySinDuplicados.length;j++){
+        for (int j = 0; j < arraySinDuplicados.length; j++) {
             System.out.println(arraySinDuplicados[j]);
         }
 
@@ -53,7 +54,7 @@ public class Otroejercicio {
         return arrayaleat;
     }
 
-     public static int[] quitarDuplicado(int[] arrayaleat) {
+    public static int[] quitarDuplicado(int[] arrayaleat) {
         // Creamos un array auxiliar del mismo tamaño que el original
         // (por si todos los números fueran diferentes)
         int[] temporal = new int[arrayaleat.length];
@@ -95,4 +96,3 @@ public class Otroejercicio {
         return arraySinDuplicado;
     }
 }
-
