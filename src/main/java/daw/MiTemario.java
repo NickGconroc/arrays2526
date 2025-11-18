@@ -1,8 +1,11 @@
 package daw;
 
+import java.util.Arrays;
+
 public class MiTemario {
     public static void main(String[] args) {
 
+        //--------------------------------------------------------
         // Uso de .charAT
 
         String texto = "Hola Mundo";
@@ -15,6 +18,14 @@ public class MiTemario {
 
         System.out.println("Primer carácter: " + primeraLetra);
         System.out.println("Quinto carácter: " + quintaLetra);
+
+        //--------------------------------------------------------
+        
+        //Uso de Arrays.sort  Para ordenar todos los arrays de menor a mayor
+
+        int [] array = {4,7,1,9,0,45,3};
+        Arrays.sort(array);
+        System.out.println(Arrays.toString((array)));
 
         //Excepciones
         //Para Capturar y Gestionar, TRY CATCH
