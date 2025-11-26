@@ -128,22 +128,47 @@ public class MiTemarioCompleto {
         System.out.println("FUNCIÓN 21 PRUEBA: repeticiones de 1 = " + contarRepeticiones(arrRepCont,1));
 
         //--------------------------------------------------------
-        // EJEMPLO TRY CATCH
-        try{
-            int x = 5/0; // Provoca ArithmeticException
-        }catch(ArithmeticException e){
-            System.out.println("Excepción capturada: " + e);
+        // EJEMPLO TRY CATCH Y THROW INTEGRADO
+        // TRY CATCH captura ArithmeticException (ejemplo división por cero)
+        try {
+            int division = 5 / 0; // Provoca ArithmeticException
+        } catch (ArithmeticException e) {
+            System.out.println("Excepción capturada (ArithmeticException): " + e);
         }
 
-        //--------------------------------------------------------
-        // EJEMPLO THROW
-        try{
-            lanzarExcepcion(-5);
-        }catch(IllegalArgumentException e){
-            System.out.println("Excepción generada: " + e.getMessage());
+        // TRY CATCH captura InputMismatchException (ejemplo Scanner con letra)
+        try {
+            System.out.println("Introduce un número:");
+            int n = tec.nextInt(); // Si se introduce texto, provoca InputMismatchException
+        } catch (java.util.InputMismatchException e) {
+            System.out.println("Excepción capturada (InputMismatchException): " + e);
+            tec.nextLine(); // limpiar buffer
         }
+
+        // THROW ejemplo IllegalArgumentException
+        try {
+            lanzarExcepcion(-10); // Lanza la excepción
+        } catch (IllegalArgumentException e) {
+            System.out.println("Excepción generada (IllegalArgumentException): " + e.getMessage());
+        }
+
+        // THROW ejemplo NegativeArraySizeException
+        try {
+            int[] arrNeg = new int[-5]; // Provoca NegativeArraySizeException
+        } catch (NegativeArraySizeException e) {
+            System.out.println("Excepción capturada (NegativeArraySizeException): " + e);
+        }
+
+        // THROW ejemplo ArrayIndexOutOfBoundsException
+        try {
+            int[] arrIdxErr = {1,2,3};
+            int val = arrIdxErr[5]; // Provoca ArrayIndexOutOfBoundsException
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Excepción capturada (ArrayIndexOutOfBoundsException): " + e);
+        }
+
     }
-
+    //Cierre de Main
     //--------------------------------------------------------
     // FUNCIONES
 
@@ -323,3 +348,5 @@ public class MiTemarioCompleto {
         if(val<0) throw new IllegalArgumentException("Valor negativo: "+val);
     }
 }
+// Si en examen dice Gestiona la excepcion, usamos un try catch 
+// Si en examen dice otro usamos throw new
