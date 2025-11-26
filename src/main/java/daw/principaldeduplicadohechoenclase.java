@@ -5,36 +5,54 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class principaldeduplicadohechoenclase {
+
     public static void main(String[] args) {
-        int tam = 0;
-        int[] arrayMain = null;  // Con esto inicializamos la variable para usarla fuera despues del do while!!!!
-        boolean salir = false;
-        Scanner tec = new Scanner(System.in);
-        do{
 
-            System.out.println("Introduce el tamaño del array: ");
-            
-            try{
-                tam = tec.nextInt();                                                        //Podriamos hacer esto en otra funcion que controle el try catch y errores
+        /* ....................................................................
+           EJERCICIO 7 y 8
+           - Generar un array de tamaño especificado con números aleatorios (1-30)
+           - Eliminar duplicados del array generado
+           .................................................................... */
+
+        int tam = 0; // Tamaño del array que introducirá el usuario
+        int[] arrayMain = null; // Variable para almacenar el array generado y poder usarla fuera del bucle
+        boolean salir = false; // Controla el do-while para repetir si hay error en la entrada
+        Scanner tec = new Scanner(System.in); // Scanner para leer entrada del usuario
+
+        do {
+            System.out.println("Introduce el tamaño del array (número positivo): ");
+
+            try {
+                tam = tec.nextInt(); // Leemos el tamaño del array introducido por el usuario
+
+                // Llamamos a la función que genera el array con números aleatorios
                 arrayMain = funcionesduplicadohechoenclase.generarArrayAleatorios(tam);
-                System.out.println(Arrays.toString(arrayMain));     //y asi evitamos hacerlo en el Main
-                salir = true;
-            }catch (IllegalArgumentException iae){                                          //COn esta excepcion controlamos que el numero no sea negativo
-                System.out.println("El tamaño del array no puede ser negativo");
-                
-            }catch(InputMismatchException ime){                                             //COn esta excepcion controlamos que no se 
-                System.out.println("Por favor no pongas letras");                           //introduza texto en vez de numero
-                tec.nextLine();  //Recordar que hay que limpiar el Scanner
-              
+
+                // Mostramos el array generado correctamente
+                System.out.println("Array generado: " + Arrays.toString(arrayMain));
+
+                salir = true; // Salimos del do-while si todo ha ido bien
+
+            } catch (IllegalArgumentException iae) {
+                // Si el usuario introduce un número negativo o cero
+                System.out.println("ERROR: El tamaño del array no puede ser negativo ni cero.");
+
+            } catch (InputMismatchException ime) {
+                // Si el usuario introduce texto en lugar de un número
+                System.out.println("ERROR: Por favor, introduce un número entero válido.");
+                tec.nextLine(); // Limpiamos el Scanner para la próxima lectura
             }
-           
-            
-        }while (!salir);
 
-        System.out.println(Arrays.toString(arrayMain)); 
+        } while (!salir);
+
         System.out.println("---------------------------");
-        funcionesduplicadohechoenclase.quitarDuplicados(arrayMain);
-        
-    }
 
+        /* ....................................................................
+           EJERCICIO 8
+           - Eliminar duplicados del array generado
+           - Mostramos al usuario el array sin duplicados
+           .................................................................... */
+        int[] arraySinDuplicados = funcionesduplicadohechoenclase.quitarDuplicados(arrayMain);
+        System.out.println("Array sin duplicados: " + Arrays.toString(arraySinDuplicados));
+    }
 }
